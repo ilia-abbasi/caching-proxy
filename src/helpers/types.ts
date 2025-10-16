@@ -1,3 +1,5 @@
 export interface Options {
-  port: Number;
+  port?: Number;
 }
+
+export type Tag = "server" | "redis";
