@@ -43,6 +43,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictBindCallApply": true,
+    "resolveJsonModule": true,
     
     // Recommended Options
     "strict": true,
