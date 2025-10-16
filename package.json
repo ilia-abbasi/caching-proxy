@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ilia-abbasi/Caching-Proxy.git"
+    "url": "git+https://github.com/ilia-abbasi/caching-proxy.git"
   },
   "author": "Ilia Abbasi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ilia-abbasi/Caching-Proxy/issues"
+    "url": "https://github.com/ilia-abbasi/caching-proxy/issues"
   },
-  "homepage": "https://github.com/ilia-abbasi/Caching-Proxy#readme",
+  "homepage": "https://github.com/ilia-abbasi/caching-proxy#readme",
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
