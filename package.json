@@ -1,0 +1,35 @@
+{
+  "name": "caching-proxy",
+  "version": "1.0.0",
+  "description": "A CLI app that caches responses",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilia-abbasi/Caching-Proxy.git"
+  },
+  "author": "Ilia Abbasi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilia-abbasi/Caching-Proxy/issues"
+  },
+  "homepage": "https://github.com/ilia-abbasi/Caching-Proxy#readme",
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.7.2",
+    "@types/redis": "^4.0.10",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1",
+    "redis": "^5.8.3"
+  }
+}
