@@ -1,13 +1,16 @@
 import { Command } from "commander";
 
-import packageData from "../package.json";
 import config from "./helpers/config.js";
 import { createApp } from "./app/app.js";
-import { Options } from "./helpers/types.js";
+import { Options, PackageData } from "./helpers/types.js";
 import { customLog } from "./helpers/utils.js";
+import { readFileSync } from "fs";
 
 const DEFAULT_PORT = 7575;
 const program = new Command();
+const packageData: PackageData = JSON.parse(
+  readFileSync("package.json", "utf-8")
+);
 
 program
   .name(packageData.name)
