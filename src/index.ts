@@ -21,7 +21,7 @@ program
   .option("-p, --port <port-number>", "Port number to listen on", parseInt)
   .argument("<host>", "The host to cache responses from");
 
-program.parse();
+program.parse(process.argv);
 config.host = program.args[0]!;
 
 const options: Options = program.opts();
