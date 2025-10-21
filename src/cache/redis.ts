@@ -1,20 +1,21 @@
 import redis, { RedisClientType } from "redis";
+import { customLog } from "../helpers/utils";
 
 let redisClient: RedisClientType<any, any, any, any, any>;
 
-async function redisConnect() {
+export async function redisConnect() {
   const redisUrl = process.env.REDIS_URL!;
 
   redisClient = await redis
     .createClient({ url: redisUrl })
-    .on("connect", () => console.log("Redis: Connected"))
+    .on("connect", () => customLog("redis", "Connected"))
     .on("error", (err) =>
       console.log(`Redis: An error occurred while trying to connect: ${err}`)
     )
     .connect();
 }
 
-async function redisSet(key: string, value: string, expiration = 0) {
+export async function redisSet(key: string, value: string, expiration = 0) {
   if (expiration <= 0) {
     console.log(
       `Redis: REFUSED to set (${key}/${value}) pair because an expiration was not provided`
@@ -32,7 +33,7 @@ async function redisSet(key: string, value: string, expiration = 0) {
   }
 }
 
-async function redisGet(key: string) {
+export async function redisGet(key: string) {
   try {
     const value = await redisClient.get(key);
     return value;
@@ -42,9 +43,3 @@ async function redisGet(key: string) {
     return false;
   }
 }
-
-module.exports = {
-  redisConnect,
-  redisSet,
-  redisGet,
-};
