@@ -23,7 +23,11 @@ program
   .argument("<host>", "The host to cache responses from");
 
 program.parse(process.argv);
-config.host = program.args[0]!;
+
+config.host = program.args[0]?.toLowerCase()!;
+if (!config.host.startsWith("http")) {
+  config.host = `http://${config.host}`;
+}
 
 const options: Options = program.opts();
 const app = createApp();

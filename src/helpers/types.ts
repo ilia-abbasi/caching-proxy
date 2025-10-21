@@ -9,3 +9,4 @@ export interface PackageData {
 }
 
 export type Tag = "server" | "redis";
+export type RedisValue = string | number | null;

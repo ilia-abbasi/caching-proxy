@@ -1,6 +1,7 @@
 import redis, { RedisClientType } from "redis";
 
 import { customLog } from "../helpers/utils.js";
+import { RedisValue } from "../helpers/types.js";
 
 let redisClient: RedisClientType<any, any, any, any, any>;
 
@@ -16,12 +17,16 @@ export async function redisConnect() {
     .connect();
 }
 
-export async function redisSet(key: string, value: string, expiration = 0) {
+export async function redisSet(key: string, value: RedisValue, expiration = 0) {
   if (expiration <= 0) {
     console.log(
       `Redis: REFUSED to set (${key}/${value}) pair because an expiration was not provided`
     );
     return;
+  }
+
+  if (value === null) {
+    value = 0;
   }
 
   try {
