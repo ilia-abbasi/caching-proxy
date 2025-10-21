@@ -1,5 +1,6 @@
 import redis, { RedisClientType } from "redis";
-import { customLog } from "../helpers/utils";
+
+import { customLog } from "../helpers/utils.js";
 
 let redisClient: RedisClientType<any, any, any, any, any>;
 

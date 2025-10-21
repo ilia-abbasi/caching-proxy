@@ -1,10 +1,10 @@
 import { Command } from "commander";
+import { readFileSync } from "fs";
 
 import config from "./helpers/config.js";
 import { createApp } from "./app/app.js";
 import { Options, PackageData } from "./helpers/types.js";
 import { customLog } from "./helpers/utils.js";
-import { readFileSync } from "fs";
 import { redisConnect } from "./cache/redis.js";
 
 const DEFAULT_PORT = 7575;
