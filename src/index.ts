@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import config from "./helpers/config.js";
 import { createApp } from "./app/app.js";
 import { Options, PackageData } from "./helpers/types.js";
-import { customLog } from "./helpers/utils.js";
+import { customLog, fixHost } from "./helpers/utils.js";
 import { redisConnect } from "./cache/redis.js";
 
 const DEFAULT_PORT = 7575;
@@ -24,10 +24,7 @@ program
 
 program.parse(process.argv);
 
-config.host = program.args[0]?.toLowerCase()!;
-if (!config.host.startsWith("http")) {
-  config.host = `http://${config.host}`;
-}
+config.host = fixHost(program.args[0]!);
 
 const options: Options = program.opts();
 const app = createApp();
