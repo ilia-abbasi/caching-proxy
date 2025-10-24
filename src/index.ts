@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { readFileSync } from "fs";
+import { readFileSync } from "node:fs";
 
 import config from "./helpers/config.js";
 import { createApp } from "./app/app.js";

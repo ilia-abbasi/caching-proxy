@@ -1,3 +1,7 @@
+# Custom ignores
+caching-proxy
+caching-proxy.bat
+
 # Logs
 logs
 *.log

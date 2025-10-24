@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express-serve-static-core";
 
 import config from "../helpers/config.js";
-import { redisGet, redisSet } from "../cache/redis";
+import { redisGet, redisSet } from "../cache/redis.js";
 import { customLog } from "../helpers/utils.js";
 
 export async function requestHandler(
