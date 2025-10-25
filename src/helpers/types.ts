@@ -1,5 +1,7 @@
 export interface Options {
-  port?: Number;
+  clearCache?: boolean;
+  port?: number;
+  origin?: string;
 }
 
 export interface PackageData {

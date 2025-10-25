@@ -5,7 +5,7 @@ import config from "./helpers/config.js";
 import { createApp } from "./app/app.js";
 import { Options, PackageData } from "./helpers/types.js";
 import { customLog, fixHost } from "./helpers/utils.js";
-import { redisConnect } from "./cache/redis.js";
+import { redisFlushDb, redisConnect } from "./cache/redis.js";
 
 const DEFAULT_PORT = 7575;
 const program = new Command();
@@ -19,18 +19,34 @@ program
   .version(packageData.version);
 
 program
+  .option("-C, --clear-cache", "Clear all cache from redis")
   .option("-p, --port <port-number>", "Port number to listen on", parseInt)
-  .argument("<host>", "The host to cache responses from");
+  .option("-o, --origin <host>", "The host to cache responses from");
 
 program.parse(process.argv);
-
-config.host = fixHost(program.args[0]!);
 
 const options: Options = program.opts();
 const app = createApp();
 const port = options.port || DEFAULT_PORT;
 
+if (!options.origin && !options.clearCache) {
+  console.log(
+    'ERROR: Either "--origin <host>" or "--clear-cache" options must be provided'
+  );
+
+  process.exit(1);
+}
+
 await redisConnect();
+
+if (options.clearCache) {
+  await redisFlushDb();
+  console.log("Flushed database.");
+
+  process.exit(0);
+}
+
+config.host = fixHost(options.origin!);
 
 app.listen(port, () => {
   customLog("server", `Listening on port ${port}`);
