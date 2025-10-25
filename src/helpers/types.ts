@@ -8,5 +8,10 @@ export interface PackageData {
   version: string;
 }
 
+export interface ResponseObj {
+  contentType: string;
+  body: string;
+}
+
 export type Tag = "server" | "redis";
 export type RedisValue = string | number | null;
