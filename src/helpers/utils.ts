@@ -1,4 +1,4 @@
-import { Tag } from "./types.js";
+import { OsName, Tag } from "./types.js";
 
 export function customLog(tag: Tag, text: string | undefined | null): void {
   console.log(`[${tag.toUpperCase()}] ${text}`);
@@ -12,4 +12,13 @@ export function fixHost(host: string): string {
   }
 
   return host;
+}
+
+export function getOsName(): OsName {
+  const platform = process.platform.toLowerCase();
+
+  if (platform.includes("lin")) return "lin";
+  if (platform.includes("win")) return "win";
+
+  return "none";
 }

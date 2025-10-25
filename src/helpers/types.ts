@@ -15,3 +15,4 @@ export interface ResponseObj {
 
 export type Tag = "server" | "redis";
 export type RedisValue = string | number | null;
+export type OsName = "none" | "lin" | "win";
